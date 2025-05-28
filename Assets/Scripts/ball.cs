@@ -41,7 +41,9 @@ public class ball : MonoBehaviour
 
         if (transform.position.y < minY)
         {
-            transform.position = Vector2.zero;
+            transform.position = target.transform.position;
+            transform.position += new Vector3(0, 1, 0);
+            ballShot = false;
         }
         if (rigid_body.linearVelocity.magnitude > maxVelocity)
         {
@@ -50,7 +52,11 @@ public class ball : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector2 hit = collision.GetContact(0).normal;
+        Vector3 hit = collision.GetContact(0).normal;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log(hit);
+        }
         rigid_body.linearVelocity = Vector2.Reflect(rigid_body.linearVelocity, hit) * Time.deltaTime;
     }
 }
