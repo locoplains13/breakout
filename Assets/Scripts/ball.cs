@@ -27,6 +27,8 @@ public class ball : MonoBehaviour
         {
             transform.position = target.transform.position;
             transform.position += new Vector3(0, 1, 0);
+            maxVelocity = 4.0f;
+
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !ballShot)
@@ -53,9 +55,10 @@ public class ball : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Vector3 hit = collision.GetContact(0).normal;
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Brick"))
         {
-            Debug.Log(hit);
+            Debug.Log("hit brick with speed: " + maxVelocity);
+            maxVelocity += 0.2f;
         }
         rigid_body.linearVelocity = Vector2.Reflect(rigid_body.linearVelocity, hit) * Time.deltaTime;
     }

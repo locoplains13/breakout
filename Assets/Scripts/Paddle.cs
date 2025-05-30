@@ -4,7 +4,7 @@ public class Paddle : MonoBehaviour
 {
     float movementHorizontal;
 
-    public float maxX = 7.5f;
+    public float maxX = 10.5f;
     public float speed = 5.0f;
     void Update()
     {
