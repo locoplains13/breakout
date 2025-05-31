@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 
 public class ball : MonoBehaviour
 {
+    public int score = 0;
     public float speed = 5.0f;
     public float minY = -5.5f;
     public float maxVelocity = 15f;
@@ -59,6 +60,7 @@ public class ball : MonoBehaviour
         {
             Debug.Log("hit brick with speed: " + maxVelocity);
             maxVelocity += 0.2f;
+            score += 50;
         }
         rigid_body.linearVelocity = Vector2.Reflect(rigid_body.linearVelocity, hit) * Time.deltaTime;
     }
