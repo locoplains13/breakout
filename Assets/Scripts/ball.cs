@@ -13,6 +13,7 @@ public class ball : MonoBehaviour
     Rigidbody2D rigid_body;
     float center;
     Vector2 direction;
+    public int lives = 3;
     bool ballShot = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,6 +25,10 @@ public class ball : MonoBehaviour
 
     void Update()
     {
+        if (lives == 0)
+        {
+            FindAnyObjectByType<GameOver>().showGameOver();
+        }
         if (!ballShot)
         {
             transform.position = target.transform.position;
@@ -34,7 +39,6 @@ public class ball : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !ballShot)
         {
-            Debug.Log("pressed space");
             rigid_body.linearVelocity = speed * Time.deltaTime * new Vector2(1, 1);
             ballShot = true;
         }
@@ -44,6 +48,7 @@ public class ball : MonoBehaviour
 
         if (transform.position.y < minY)
         {
+            lives -= 1;
             transform.position = target.transform.position;
             transform.position += new Vector3(0, 1, 0);
             ballShot = false;
@@ -58,7 +63,6 @@ public class ball : MonoBehaviour
         Vector3 hit = collision.GetContact(0).normal;
         if (collision.gameObject.CompareTag("Brick"))
         {
-            Debug.Log("hit brick with speed: " + maxVelocity);
             maxVelocity += 0.2f;
             score += 50;
         }
