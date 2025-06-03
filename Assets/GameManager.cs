@@ -4,9 +4,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI score;
+    public TextMeshProUGUI lives;
     public TextMeshProUGUI highScore;
     public GameObject ballObject;
     int scoreVar;
+    int livesVar = 3;
     int highScoreVar = 0;
 
     void Start()
@@ -23,5 +25,7 @@ public class GameManager : MonoBehaviour
             highScoreVar = scoreVar;
             highScore.text = ("High Score: " + highScoreVar.ToString());
         }
+        livesVar = ballObject.GetComponent<ball>().lives;
+        lives.text = ("Lives " + livesVar.ToString());
     }
 }
