@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject ballObject;
     int scoreVar;
     int livesVar = 3;
-    int highScoreVar = 0;
+    int highScoreVar;
 
     void Start()
     {
@@ -20,12 +20,30 @@ public class GameManager : MonoBehaviour
     {
         scoreVar = ballObject.GetComponent<ball>().score;
         score.text = ("Score: " + scoreVar.ToString());
-        if (scoreVar > highScoreVar)
+        highScoreUpdate();
+        livesVar = ballObject.GetComponent<ball>().lives;
+        lives.text = ("Lives " + livesVar.ToString());
+    }
+    public void highScoreUpdate()
+    {
+        if (PlayerPrefs.HasKey("SavedHighScore"))
         {
+            if (scoreVar > PlayerPrefs.GetInt("SavedHighScore"))
+            {
+                PlayerPrefs.SetInt("SavedHighScore", scoreVar);
+                highScoreVar = PlayerPrefs.GetInt("SavedHighScore");
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("SavedHighScore", scoreVar);
             highScoreVar = scoreVar;
             highScore.text = ("High Score: " + highScoreVar.ToString());
         }
         livesVar = ballObject.GetComponent<ball>().lives;
+
+
         lives.text = ("Lives " + livesVar.ToString());
+        highScore.text = ("High Score: " + PlayerPrefs.GetInt("SavedHighScore").ToString());
     }
 }
