@@ -11,9 +11,11 @@ public class ball : MonoBehaviour
     public float minY = -5.5f;
     public float maxVelocity = 15f;
     public GameObject target;
+    public GameObject paddle;
     Rigidbody2D rigid_body;
     float center;
     Vector2 direction;
+    int directionBall;
     public int lives = 3;
     public bool ballShot = false;
 
@@ -40,7 +42,15 @@ public class ball : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !ballShot)
         {
-            rigid_body.linearVelocity = speed * Time.deltaTime * new Vector2(1, 1);
+            if (paddle.GetComponent<Paddle>().movementHorizontal > 0)
+            {
+                directionBall = 1;
+            }
+            else
+            {
+                directionBall = -1;
+            }
+            rigid_body.linearVelocity = speed * Time.deltaTime * new Vector2(directionBall * 3, 1);
             ballShot = true;
         }
 
@@ -64,10 +74,9 @@ public class ball : MonoBehaviour
         Vector3 hit = collision.GetContact(0).normal;
         if (collision.gameObject.CompareTag("Brick"))
         {
-            maxVelocity += 0.2f;
+            maxVelocity += 0.1f;
             score += 50;
             levelGenerator.GetComponent<level>().bricks--;
         }
-        rigid_body.linearVelocity = Vector2.Reflect(rigid_body.linearVelocity, hit) * Time.deltaTime;
     }
 }

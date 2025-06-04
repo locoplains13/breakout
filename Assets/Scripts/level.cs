@@ -9,9 +9,11 @@ public class level : MonoBehaviour
 
     byte[] colors = new byte[] { 234, 56, 56 };
 
+    public Gradient gradient;
+
     void Start()
     {
-        float height = 2.5f;
+        float height = 2f;
         float length = 10f;
         GenerateLevel(height, length);
     }
@@ -33,7 +35,8 @@ public class level : MonoBehaviour
             for (float i = -9.75f; i < length; i += horizontal_separation)
             {
                 bricks++;
-                Debug.Log(bricks);
+
+                // sprite.color = gradient.Evaluate((float)h / (length - 1));
                 sprite.color = new Color32(colors[0], colors[1], colors[2], 255);
                 Instantiate(brick, new Vector3(i, h, 0), Quaternion.identity);
             }

@@ -568,6 +568,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brick: {fileID: 3512653235599004589, guid: d0aa68b66da26ef4497f9e9cbdff69b5, type: 3}
   bricks: 0
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0, g: 0.80654335, b: 1, a: 1}
+    key1: {r: 0.26122597, g: 0.18422928, b: 0.8679245, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!4 &407265984
 Transform:
   m_ObjectHideFlags: 0
@@ -3700,6 +3730,18 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4982285953966547495, guid: 8120fa39fddbca54f8610129f297e0d6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982285953966547495, guid: 8120fa39fddbca54f8610129f297e0d6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7502117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982285953966547495, guid: 8120fa39fddbca54f8610129f297e0d6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.252047
+      objectReference: {fileID: 0}
     - target: {fileID: 8633461076702517045, guid: 8120fa39fddbca54f8610129f297e0d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.04114
@@ -3825,9 +3867,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 1848966210127699487, guid: d2948093917c3604f8426b4272aa75ee, type: 3}
+      propertyPath: m_Color.b
+      value: 0.43921322
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848966210127699487, guid: d2948093917c3604f8426b4272aa75ee, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848966210127699487, guid: d2948093917c3604f8426b4272aa75ee, type: 3}
+      propertyPath: m_Color.r
+      value: 0.705161
+      objectReference: {fileID: 0}
     - target: {fileID: 5084289000756762109, guid: d2948093917c3604f8426b4272aa75ee, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5084289000756762109, guid: d2948093917c3604f8426b4272aa75ee, type: 3}
       propertyPath: m_Material
@@ -3839,6 +3893,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084289000756762109, guid: d2948093917c3604f8426b4272aa75ee, type: 3}
       propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5084289000756762109, guid: d2948093917c3604f8426b4272aa75ee, type: 3}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5084289000756762109, guid: d2948093917c3604f8426b4272aa75ee, type: 3}
@@ -3880,6 +3938,7 @@ MonoBehaviour:
   minY: -5.5
   maxVelocity: 4
   target: {fileID: 123230723}
+  paddle: {fileID: 123230723}
   lives: 3
   ballShot: 0
 --- !u!1660057539 &9223372036854775807
