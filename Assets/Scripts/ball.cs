@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 
 public class ball : MonoBehaviour
 {
+    public GameObject levelGenerator;
     public int score = 0;
     public float speed = 5.0f;
     public float minY = -5.5f;
@@ -14,7 +15,7 @@ public class ball : MonoBehaviour
     float center;
     Vector2 direction;
     public int lives = 3;
-    bool ballShot = false;
+    public bool ballShot = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,6 +66,7 @@ public class ball : MonoBehaviour
         {
             maxVelocity += 0.2f;
             score += 50;
+            levelGenerator.GetComponent<level>().bricks--;
         }
         rigid_body.linearVelocity = Vector2.Reflect(rigid_body.linearVelocity, hit) * Time.deltaTime;
     }
