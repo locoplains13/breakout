@@ -71,12 +71,23 @@ public class ball : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector3 hit = collision.GetContact(0).normal;
+        string soundName = "";
         if (collision.gameObject.CompareTag("Brick"))
         {
+            soundName = "Brick pop";
             maxVelocity += 0.1f;
             score += 50;
             levelGenerator.GetComponent<level>().bricks--;
         }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            soundName = "Paddle Hit";
+        }
+        else
+        {
+            soundName = "Wall hit";
+        }
+        FindAnyObjectByType<AudioManager>().Play(soundName);
+
     }
 }
